@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGlobalContext } from './context';
 
 import SetupForm from './SetupForm';
 import Loading from './Loading';
 import Modal from './Modal';
 function App() {
+  const [loading, setLoading] = useState(true);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <main>
       <section className="quiz quiz-small">
