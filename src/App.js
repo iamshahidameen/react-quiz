@@ -14,41 +14,33 @@ function App() {
   }
   return (
     <main>
-      <section className="quiz quiz-small">
-        <form className="setup-form">
-          <h2>setup quiz</h2>
-          <div className="form-control">
-            <label for="amount">number of questions</label>
-            <input
-              type="number"
-              name="amount"
-              id="amount"
-              className="form-input"
-              min="1"
-              max="50"
-              value="10"
-            />
-          </div>
-          <div className="form-control">
-            <label for="category">category</label>
-            <select name="category" id="category" className="form-input">
-              <option value="sports">sports</option>
-              <option value="history">history</option>
-              <option value="politics">politics</option>
-            </select>
-          </div>
-          <div className="form-control">
-            <label for="difficulty">select difficulty</label>
-            <select name="difficulty" id="difficulty" className="form-input">
-              <option value="easy">easy</option>
-              <option value="medium">medium</option>
-              <option value="hard">hard</option>
-            </select>
-          </div>
-          <button type="submit" className="submit-btn">
-            start
-          </button>
-        </form>
+      <div className="modal-container">
+        <div className="modal-content">
+          <h2>congrats!</h2>
+          <p>You answered 0% of questions correctly</p>
+          <button className="close-btn">play again</button>
+        </div>
+      </div>
+      <section className="quiz">
+        <p className="correct-answers">correct answers : 0/0</p>
+        {questions.map((singleQuestion, index) => {
+          console.log(singleQuestion);
+          const { question, incorrect_answers, correct_answers } =
+            singleQuestion;
+          return (
+            <article className="container" key={`Q_${index}`}>
+              <h2>{question}</h2>
+              <div className="btn-container">
+                <button className="answer-btn">Japan</button>
+                <button className="answer-btn">Australia</button>
+                <button className="answer-btn">Germany</button>
+                <button className="answer-btn">China</button>
+              </div>
+            </article>
+          );
+        })}
+
+        <button className="next-question">next question</button>
       </section>
     </main>
   );
